@@ -1,0 +1,156 @@
+<% if current_user.admin? || @user = current_user %>
+
+	<% provide(:title, @user.name) %>
+
+	<div class="row section">
+		<aside class="col-md-4">
+	    	<section>
+	    	<h1>
+	        	<%= @user.name %>
+	      	</h1>
+	    	</section>
+	    	<section>
+	      		<%= render 'shared/stats' if current_user?(@user)%>
+	    	</section>
+	    	<section>
+	    		Email: <%= @user.email %> <br>
+	    		# of sleeps: <%= @user.sleeps.count %>
+	    	</section>
+	  	</aside>
+
+	  	<% if current_user.admin? %>
+			<div class="span8", id="sleeps-list">
+				<% if @user.sleeps.any? %>
+					<h3>Sleep (<%= @user.sleeps.count %>)</h3>
+					<ol class="sleeps">
+						<%= render @sleeps %>
+					</ol>
+					<%= will_paginate @sleeps %>
+				<% end %>
+			</div>
+		<% end %>
+	</div>
+
+	<% if @user.sleeps.any? then %>
+		<div class="row graphic_page section">
+			<%= content_tag "div", id: "last1_chart", data: {content: @sleep_data, 
+							start: Time.parse(@sleeps.last.created_at.to_s).utc.to_i*1000 } do %>
+			<% end %>
+		</div>	
+
+		<div class="row graphic_page section">
+			<%= content_tag "div", id: "last7_chart", data: {content: @user.sleeps.limit(7).order('created_at desc')} do %>
+			<% end %>
+		</div>	
+	<% end %>
+
+<% else %>
+	
+	<% render user_path %>
+
+<% end %>
+
+<script type="text/javascript">
+
+$(function chart() {
+    // Create the chart
+  
+    
+    window.chart = new Highcharts.StockChart({
+        chart : {
+            renderTo : 'last1_chart',
+            spacingTop: 10,
+            zoomType: "x"
+            // backgroundColor: rgba(255,255,255,1)
+            },
+
+        rangeSelector : {
+            selected : 1
+            },
+
+        title : {
+            text : ''
+            },
+
+        legend :{
+            enabled : true
+            },
+
+        scrollbar : {
+			enabled : false
+			},
+             
+        xAxis: {
+        	type: 'datetime',
+        	dateTimeLabelFormats: {
+                        	day: '%e of %b, %H:%M'
+              	}
+        	},
+            
+        series : [{
+            <% if @user.sleeps.any? then %>
+            name : <%= raw "\"Sleep from " + @user.sleeps.last.created_at.to_s + "\""%><% end %>,
+            data : $('#last1_chart').data('content'),
+            // data: [[5,2], [6,4], [14,-2]],  
+            pointStart: $('#last1_chart').data('start'),
+        	pointInterval: 60 * 1000 // one minute    
+            }]
+       })
+       // chart.rangeSelector.zoomText.hide();
+       // $.each(chart.rangeSelector.buttons, function () { this.hide();} );
+       // $(chart.rangeSelector.divRelative).hide();
+	
+
+
+
+	window.chart = new Highcharts.StockChart({
+        chart : {
+            renderTo : 'last7_chart',
+            spacingTop: 10,
+            zoomType: "x"
+            },
+
+            rangeSelector : {
+                selected : 1
+            },
+
+            title : {
+                text : ''
+            },
+
+            legend :{
+                enabled : true
+            },
+
+            scrollbar : {
+				enabled : false
+			},
+             
+            xAxis: {
+            	type: 'datetime',
+            	dateTimeLabelFormats: {
+                	day: '%e of %b, %H:%M'
+            	}
+        	},
+            
+            <% @sleeps_data = @user.sleeps.limit(7).order('created_at desc') %>
+            series : [
+            <% @sleeps_data.each_with_index do |sleep_data, index| %>
+            	{
+                name : <%= raw "\"Sleep from " + sleep_data.created_at.to_s + "\"" %>,
+                data : <%= sleep_data.content.split(",").map(&:to_i) %>,
+                pointStart: <%= Time.parse(sleep_data.created_at.to_s).utc.to_i*1000 %>,
+            	pointInterval: 60 * 1000 // one minute   
+            	}
+            	<% unless (index == (@sleeps_data.size-1)) then %>
+            		,
+            	<% end %>
+            <% end %>
+            ]
+       })
+       // chart.rangeSelector.zoomText.hide();
+       // $.each(chart.rangeSelector.buttons, function () { this.hide();} );
+       // $(chart.rangeSelector.divRelative).hide();
+	
+});
+</script>   

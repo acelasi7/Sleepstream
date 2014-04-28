@@ -1,0 +1,11 @@
+<li>
+	<% user = User.find(relationship.follower_id) %>
+  	<% User.find(relationship.follower_id).name %>
+  	<% unless current_user?(user) %>
+  		<%= User.find(relationship.follower_id).name %>
+  		<%= link_to "remove", relationship,     method: :delete,
+                                     confirm: "You sure?",
+                                     id: relationship.id %>
+
+	<% end %>
+</li>

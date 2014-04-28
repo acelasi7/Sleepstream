@@ -1,0 +1,7 @@
+<h1>
+  <%= current_user.name %> (<%= current_user.sleeps.count %>)
+</h1>
+<span>
+  <% #pluralize(current_user.sleeps.count, "sleep") %>
+  Email: <%= current_user.email %>
+</span>

@@ -1,0 +1,13 @@
+<li>
+  	<span class="content"><%= sleep.content %></span>
+  	<span class="timestamp">
+    	Posted <%= time_ago_in_words(sleep.created_at) %> ago.
+  	</span>
+  	<span> 	<% if current_user.admin? %>
+  			<%= link_to "remove", sleep,     method: :delete,
+                                     confirm: "You sure?",
+                                     id: sleep.id,
+                                     remote: true %>
+			<% end %>
+	</span>
+</li>

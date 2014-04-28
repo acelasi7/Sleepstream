@@ -1,0 +1,11 @@
+<% if signed_in? %>
+  
+
+<% else %>
+
+  <div class="row center">
+    <h3>Welcome to Sleepstream!</h3>
+    <%= link_to "Sign In", signin_path, :class => "btn btn-default" %>
+  </div>
+
+<% end %>

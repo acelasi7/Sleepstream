@@ -1,0 +1,78 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/scrollViewWrapper"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent" >
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical" >
+
+        <TextView
+            android:id="@+id/tvWebServerAccountDisplayer"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Please select an option" />
+		
+        <!--  
+        <Button
+            android:id="@+id/bPostRequestLogin"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:layout_centerHorizontal="true"
+            android:onClick="mPostRequestWebServer"
+            android:text="Test Login: POST Request" 
+            />
+        -->
+        
+        <Button
+            android:id="@+id/bPostRequestStartSleep"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:layout_centerHorizontal="true"
+            android:onClick="mPostRequestWebServerStartSleep"
+            android:text="Start a new sleep session" />
+
+        <Button
+            android:id="@+id/bVisitWebSite"
+            android:layout_width="match_parent"
+            android:onClick="mVisitWebSite"
+            android:layout_height="wrap_content"
+            android:text="Display graphs on website" />
+
+        <Button
+            android:id="@+id/bGetRequest"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:layout_centerHorizontal="true"
+            android:onClick="mGetRequestWebServer"
+            android:text="Show all previous sleep sessions" />
+
+        <!--  
+        <Button
+            android:id="@+id/bPutRequest"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:layout_centerHorizontal="true"
+            android:onClick="mPutRequestWebServer"
+            android:text="Test updating data in sleep session: PUT Request" />
+		-->
+		
+        <TextView
+            android:id="@+id/tvWebServerResponse"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Info of sleep sessions are shown here" />
+
+        <ProgressBar
+            android:id="@+id/pbWebServerProgressBar"
+            style="?android:attr/progressBarStyleLarge"
+            android:layout_gravity="center_horizontal"
+            android:visibility="invisible"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content" />
+
+    </LinearLayout>
+
+</ScrollView>

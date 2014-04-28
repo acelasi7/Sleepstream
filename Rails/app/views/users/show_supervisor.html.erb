@@ -1,0 +1,13 @@
+<h1>Supervisors</h1>
+
+<div class="row">
+  <div class="col-md-6 col-md-offset-3">
+      	<%= render 'follow' if signed_in? %>
+      	<% if @user.relationships.any? %>
+			<h3>Supervisors (<%= @user.relationships.count %>)</h3>
+			<ol class="supervisors">
+				<%= render @user.relationships %>
+			</ol>
+		<% end %>
+  </div>
+</div>

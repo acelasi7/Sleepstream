@@ -1,0 +1,1 @@
+{"manifestVersion": 1, "generatedBy": "riccardo-Aspire-5738", "generatedAt": 1395596806, "application": {"timestamp": 1395596804, "sdk_version": {"major": 5, "minor": 0}, "crc": 792761166, "name": "pebble-app.bin", "size": 2200}, "debug": {}, "type": "application", "resources": {"timestamp": 1395596804, "crc": 1269160898, "name": "app_resources.pbpack", "size": 4108}}
