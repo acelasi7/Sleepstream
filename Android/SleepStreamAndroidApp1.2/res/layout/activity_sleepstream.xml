@@ -1,0 +1,105 @@
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/svMainActivityContainer"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent" >
+
+   <LinearLayout
+        android:id="@+id/LinearLayout1"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical"
+        android:paddingBottom="@dimen/activity_vertical_margin"
+        android:paddingLeft="@dimen/activity_horizontal_margin"
+        android:paddingRight="@dimen/activity_horizontal_margin"
+        android:paddingTop="@dimen/activity_vertical_margin"
+        tools:context=".SleepStreamActivity" >
+
+        <TextView
+            android:id="@+id/tvCurrentMusic"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Shows Current Music" />
+
+        <Button
+            android:id="@+id/startCommunicationButton"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:onClick="mStartCommunication"
+            android:text="Scan for connected Pebble" />
+
+        <Button
+            android:id="@+id/bWebServerActivity"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:onClick="mWebServerActivity"
+            android:text="Create and view sleep sessions" />
+
+        <Button
+            android:id="@+id/bPlayMusic"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:onClick="mPlayMusic"
+            android:text="Play/Stop Music" />
+        
+        <Button
+            android:id="@+id/bChooseMusicDuration"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:onClick="mSwitchMusicDuration"
+            android:text="Disable 20 sec limit playback" />
+        
+
+        <Button
+            android:id="@+id/bLaunchPebbleApp"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:onClick="mLaunchPebbleApp"
+            android:text="Launch Pebble App Remotely" />
+
+        <Button
+            android:id="@+id/bKillPebbleApp"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:onClick="mKillPebbleApp"
+            android:text="Terminate Pebble App Remotely" />
+        
+<!-- Unused functionality
+        <Button
+            android:id="@+id/bSendDictionary"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:onClick="mSendSampleDictionary"
+            android:text="Send Sample PebbleDictionary" />
+-->
+
+        <Button
+            android:id="@+id/bChooseMusicButton"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:onClick="mChooseMusic"
+            android:text="Choose Music - Media Player" />
+
+        <Button
+            android:id="@+id/bChooseMusicInternal"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:onClick="mChooseMusicInternal"
+            android:text="Choose Music - Default Sounds" />
+
+        <Button
+            android:id="@+id/bLogoutUser"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:onClick="mLogoutUser"
+            android:text="Log Out" />
+
+        <TextView
+            android:id="@+id/textView1"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="\nSleepstream, takes care of your sleep." />
+
+    </LinearLayout>
+
+</ScrollView>

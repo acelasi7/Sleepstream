@@ -19,7 +19,7 @@
 	  	</aside>
 
 	  	<% if current_user.admin? %>
-			<div class="span8", id="sleeps-list">
+			<div class="col-md-8", id="sleeps-list">
 				<% if @user.sleeps.any? %>
 					<h3>Sleep (<%= @user.sleeps.count %>)</h3>
 					<ol class="sleeps pre-scrollable">

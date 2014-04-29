@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical" >
+
+    <EditText
+        android:id="@+id/etEmailEntry"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:ems="10"
+        android:hint="Email"
+        android:inputType="textEmailAddress" >
+
+        <requestFocus />
+    </EditText>
+
+    <EditText
+        android:id="@+id/etPasswordEntry"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:ems="10"
+        android:hint="Password"
+        android:inputType="textPassword" />
+    
+    <Button
+        android:id="@+id/bLoginAccount"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:onClick="mLoginUserAccount"
+        android:text="Login" />
+
+    <Button
+        android:id="@+id/bRegisterAccount"
+        android:layout_width="fill_parent"
+        android:onClick="mRegisterUserAccount"
+        android:layout_height="wrap_content"
+        android:text="Register (External Website)" />
+
+    <ProgressBar
+        android:id="@+id/progressBarLoginActvity"
+        style="?android:attr/progressBarStyleLarge"
+        android:layout_width="match_parent"
+        android:visibility="invisible"
+        android:layout_height="wrap_content" />
+
+</LinearLayout>
