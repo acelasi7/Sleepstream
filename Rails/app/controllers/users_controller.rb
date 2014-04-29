@@ -20,7 +20,7 @@ class UsersController < ApplicationController
 
     def index
         if current_user.admin?
-            @users = User.all
+            @users = User.all.order('created_at')
         else
             flash[:error] = "You don't have permission"
             redirect_to root_url
@@ -29,7 +29,7 @@ class UsersController < ApplicationController
 
 	def show
         @user = User.find(params[:id])
-        @sleeps = @user.sleeps.paginate(page: params[:page])
+        @sleeps = @user.sleeps.order('created_at desc')
         if @user.sleeps.any?
             @sleep_data = @user.sleeps.last.content.split(",").map(&:to_i)
         end

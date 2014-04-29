@@ -22,10 +22,9 @@
 			<div class="span8", id="sleeps-list">
 				<% if @user.sleeps.any? %>
 					<h3>Sleep (<%= @user.sleeps.count %>)</h3>
-					<ol class="sleeps">
+					<ol class="sleeps pre-scrollable">
 						<%= render @sleeps %>
 					</ol>
-					<%= will_paginate @sleeps %>
 				<% end %>
 			</div>
 		<% end %>
